@@ -18,11 +18,12 @@
 
 \usepackage[poster]{tcolorbox}
 \usepackage{blindtext}
+\usepackage{array}
 
 
 \newcommand\borderedlogo[1]{
   \begin{tikzpicture}
-    \node [inner sep=0pt] at (0,0) {\includegraphics[]{#1}};
+    \node [inner sep=0pt] at (0,0) {\includegraphics[width=98mm]{#1}};
     \draw [white, rounded corners=\ClipSep, line width=\ClipSep]
     (current bounding box.north west) --
     (current bounding box.north east) --
@@ -49,30 +50,30 @@
 
 
   % 27.02 mm | 23.68 mm | 183pt
-  \node[anchor=north west] at ($(current page.north west)+(27mm,-50mm)$)
-  (H) {
-    \color{sc-blue}\bfseries
-    % \fontseries{eb}\selectfont
-    \fontsize{183}{200}\selectfont
-    [THEMENTITEL]
-  };
+  % \node[anchor=north west] at ($(current page.north west)+(27mm,-50mm)$)
+  % (H) {
+  %   \color{sc-blue}\bfseries
+  %   % \fontseries{eb}\selectfont
+  %   \fontsize{183}{200}\selectfont
+  %   [THEMENTITEL]
+  % };
 
-  \node[anchor=north west] at ($(current page.north west)+(27mm,-120mm)$)
-  (H) {
-    \color{sc-blue}\bfseries
-    % \fontseries{eb}\selectfont
-    \fontsize{107}{42}\selectfont
-    [Author \textcolor{sc-purple}{|} Blubber]
-  };
+  % \node[anchor=north west] at ($(current page.north west)+(27mm,-120mm)$)
+  % (H) {
+  %   \color{sc-blue}\bfseries
+  %   % \fontseries{eb}\selectfont
+  %   \fontsize{107}{42}\selectfont
+  %   [Author \textcolor{sc-purple}{|} Blubber]
+  % };
 
-  \node[anchor=north east] at ($(current page.north east)-(27mm,-120mm)$)
-  (H) {
-    \raggedleft
-    \borderedlogo{KIT}
-  };
+  % \node[anchor=north east] at ($(current page.north east)-(10mm,-120mm)$)
+  % (H) {
+  %   \raggedleft
+  %   \borderedlogo{KIT}
+  % };
 
   % middle bottom
-  \node[anchor=south] at ($(current page.south)+(0mm,24mm)$)
+  \node[anchor=south] at ($(current page.south)+(0mm,0mm)$)
   (H) {
     \raisebox{-0.5\height}{%
       \includegraphics[height=17mm]{logo.pdf}
@@ -84,17 +85,27 @@
   };
 
 \end{tikzpicture}
-\vspace{160mm}
-
 %% --------------------------------- content here
 
-\borderedlogo{KIT}
+\vspace{-10mm}
+
+\parbox{.7\textwidth}{
+  \color{sc-blue}\bfseries
+  % \fontseries{eb}\selectfont
+  \fontsize{183}{200}\selectfont
+  [THEMENTITEL]
+  \\[10mm]
+  \fontsize{107}{42}\selectfont
+  \color{sc-blue}\bfseries
+  %\fontseries{ub}\selectfont
+  [Author {\color{sc-purple}{|}} Blubber]
+}
+\parbox{.25\textwidth}{
+  \raggedleft
+  \borderedlogo{KIT}
+}
 
 \begin{multicols}{3}
-  \section{Intro}
-  \begin{tcolorbox}{Intro}
-    \blindtext[2]
-  \end{tcolorbox}
 
 \end{multicols}
 
