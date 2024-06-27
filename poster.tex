@@ -1,0 +1,103 @@
+\documentclass[a0,landscape]{sciposter}
+\usepackage[margin=0mm]{geometry}
+
+\usepackage[TS1,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{mathpazo}
+\usepackage{nunito}
+\usepackage{textpos}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usetikzlibrary{positioning,calc,fit,shapes}
+\newcommand*{\ClipSep}{0.4cm}%
+\usepackage{multicol}
+\usepackage{xcolor}
+\definecolor{sc-purple}{RGB}{140,55,226}
+\definecolor{sc-blue}{RGB}{26,53,94}
+
+\usepackage[poster]{tcolorbox}
+\usepackage{blindtext}
+
+
+\newcommand\borderedlogo[1]{
+  \begin{tikzpicture}
+    \node [inner sep=0pt] at (0,0) {\includegraphics[]{#1}};
+    \draw [white, rounded corners=\ClipSep, line width=\ClipSep]
+    (current bounding box.north west) --
+    (current bounding box.north east) --
+    (current bounding box.south east) --
+    (current bounding box.south west) -- cycle
+    ;
+
+    \draw [black!15, rounded corners=10pt, line width=1pt]
+    (current bounding box.north west) --
+    (current bounding box.north east) --
+    (current bounding box.south east) --
+    (current bounding box.south west) -- cycle
+    ;
+  \end{tikzpicture}
+}
+
+\begin{document}
+
+% x=0mm y==161.45 mm
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north west] at ($(current page.north
+  west)+(-25mm,-161.45mm)$) (B) {
+    \includegraphics[width=\paperwidth,height=7.48mm]{colorbar.pdf}};
+
+
+  % 27.02 mm | 23.68 mm | 183pt
+  \node[anchor=north west] at ($(current page.north west)+(27mm,-50mm)$)
+  (H) {
+    \color{sc-blue}\bfseries
+    % \fontseries{eb}\selectfont
+    \fontsize{183}{200}\selectfont
+    [THEMENTITEL]
+  };
+
+  \node[anchor=north west] at ($(current page.north west)+(27mm,-120mm)$)
+  (H) {
+    \color{sc-blue}\bfseries
+    % \fontseries{eb}\selectfont
+    \fontsize{107}{42}\selectfont
+    [Author \textcolor{sc-purple}{|} Blubber]
+  };
+
+  \node[anchor=north east] at ($(current page.north east)-(27mm,-120mm)$)
+  (H) {
+    \raggedleft
+    \borderedlogo{KIT}
+  };
+
+  % middle bottom
+  \node[anchor=south] at ($(current page.south)+(0mm,24mm)$)
+  (H) {
+    \raisebox{-0.5\height}{%
+      \includegraphics[height=17mm]{logo.pdf}
+    }
+    \hspace*{1cm}
+    \raisebox{-0.5\height}{
+      \includegraphics[height=38mm]{sponsor.pdf}
+    }
+  };
+
+\end{tikzpicture}
+\vspace{160mm}
+
+%% --------------------------------- content here
+
+\borderedlogo{KIT}
+
+\begin{multicols}{3}
+  \section{Intro}
+  \begin{tcolorbox}{Intro}
+    \blindtext[2]
+  \end{tcolorbox}
+
+\end{multicols}
+
+\end{document}
+
+
